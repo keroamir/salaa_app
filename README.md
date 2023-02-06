@@ -1,16 +1,26 @@
-# salaa_app
+# Praying and Prayer Time App with Electronic Tasbeeh
 
-A new Flutter project.
+This is a Flutter based app for Muslims to track their daily prayers (Salah) and to keep count of their Tasbeeh (electronic counter for dhikr). The app provides an accurate and customizable prayer time schedule, and a simple and easy-to-use electronic Tasbeeh.
 
-## Getting Started
+## Features
+- Accurate prayer time calculation based on location
+- Electronic Tasbeeh to keep count of dhikr
+- Easy to use interface
 
-This project is a starting point for a Flutter application.
+## Installation
+1. Clone this repository to your local machine: `https://github.com/<your-github-username>/<repository-name>.git`
+2. Navigate to the project directory: `cd <sala_app>`
+3. Install the required dependencies: `flutter pub get`
+4. Run the app on an emulator or a connected physical device: `flutter run`
 
-A few resources to get you started if this is your first Flutter project:
+Note: Make sure you have the Flutter SDK installed on your machine before running the app.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Usage
+This app is just a prototype and is not available on the app store. It is intended for demonstration purposes only.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contributing
+This project is open source and welcomes contributions. If you find a bug or have an idea for a new feature, please open an issue or submit a pull request.
+
+## License
+This project is licensed under the terms of the MIT license.
+
