@@ -4,7 +4,6 @@ This is a Flutter based app for Muslims to track their daily prayers (Salah) and
 
 ## :heavy_check_mark: Features
 - Accurate prayer time calculation based on location
-- Customizable Adhan and Iqama alerts
 - Electronic Tasbeeh to keep count of dhikr
 - Easy to use interface
 
