@@ -288,6 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.all(10.0),
                       child: CustomText(
                         align: TextAlign.right,
+                        direction: TextDirection.rtl,
                         text:
                         '(اللَّهُمَّ إنِّي أعُوذُ بكَ مِنَ الهَمِّ والحَزَنِ، والعَجْزِ والكَسَلِ، والبُخْلِ، والجُبْنِ، وضَلَعِ الدَّيْنِ، وغَلَبَةِ الرِّجالِ)',
                         size: 18,

@@ -5,7 +5,9 @@ import 'package:salaa_app/constant.dart';
 import '../../controller/azkar.dart';
 
 class ContentScreen extends StatefulWidget {
-  const ContentScreen({Key? key}) : super(key: key);
+  String mainTitle;
+
+  ContentScreen(this.mainTitle);
 
   @override
   State<ContentScreen> createState() => _ContentScreenState();
@@ -14,9 +16,10 @@ class ContentScreen extends StatefulWidget {
 class _ContentScreenState extends State<ContentScreen> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: CustomAppBar(
-        title: "أذكار الصباح",
+        title: "${widget.mainTitle}",
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -28,17 +31,19 @@ class _ContentScreenState extends State<ContentScreen> {
       ),
       body: FutureBuilder(
         future: AzkarApi.fetchAzkar(),
-        builder: (context, snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           return (snapshot.hasData)
               ? ListView.builder(
-            itemCount: (snapshot.data as List).length ,
-            itemBuilder: (BuildContext context, int index) {
-              return CustomAzkarCard(
-                  count: (snapshot.data as List)[index].repeat,
-                  text:
-                  "${(snapshot.data as List)[index].zekr}");
-            },
-          )
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: CustomAzkarCard(
+                          count: snapshot.data[index].repeat,
+                          text: "${snapshot.data[index].zekr}"),
+                    );
+                  },
+                )
               : Center(child: CircularProgressIndicator());
         },
       ),

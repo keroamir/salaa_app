@@ -9,9 +9,11 @@ class CustomText extends StatelessWidget {
   double? size;
   FontWeight? weight;
   TextAlign? align;
+  TextDirection? direction;
 
   CustomText(
       {required this.text,
+       this.direction,
       this.align,
       required this.color,
       required this.size,
@@ -21,6 +23,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "$text",
+      textDirection: direction,
       style: TextStyle(
         color: color,
         fontSize: size,
@@ -63,7 +66,7 @@ class CustomStack extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ContentScreen();
+          return ContentScreen("$title");
         }));
       },
       child: Padding(
@@ -73,6 +76,7 @@ class CustomStack extends StatelessWidget {
             Image.asset(img!, width: MediaQuery.of(context).size.width),
             Positioned(
               child: CustomText(
+                  direction: TextDirection.rtl,
                   text: title, size: 18, color: white, weight: FontWeight.w600),
               bottom: 20,
               right: 20,
@@ -136,6 +140,7 @@ class _CustomAzkarCardState extends State<CustomAzkarCard> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CustomText(
+                          direction: TextDirection.rtl,
                           text: "${widget.count}",
                           color: white,
                           size: 14,
