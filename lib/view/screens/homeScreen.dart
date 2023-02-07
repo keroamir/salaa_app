@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:salaa_app/component.dart';
 import 'package:salaa_app/constant.dart';
 import 'package:salaa_app/controller/timeprayer.dart';
+
+import 'package:salaa_app/dateAndLocation.dart';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,8 +18,36 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  DateAndLocation _dateAndLocation = DateAndLocation();
+  Position? userLocation;
+  String? cityState;
+
+  @override
+  void initState() {
+    super.initState();
+    _getLocation();
+  }
+
+  void _getLocation() async {
+    userLocation = await _dateAndLocation.getUserLocation();
+    cityState = userLocation!.latitude.toString() + ", " + userLocation!.longitude.toString();
+
+
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+
+
+    var date = _dateAndLocation.getCurrentDateInArabic();
+
+     var hijriCalendar = HijriCalendar.now();
+     var today = hijriCalendar.fullDate();
+
+
     return Scaffold(
       backgroundColor: white,
       body: Padding(
@@ -24,12 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 CustomText(
-                    text: "الأحد 25,سبيتمبر",
+                    text: date,
                     color: black,
                     size: 18,
                     weight: FontWeight.w600),
                 CustomText(
-                    text: "13 صفر ,1444",
+                    text: today,
                     color: mainColor,
                     size: 14,
                     weight: FontWeight.w500),
@@ -49,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomText(
-                            text: "الزقازيق, الشرقية",
+                            text: cityState,
                             color: white,
                             size: 14,
                             weight: FontWeight.w500),
@@ -288,7 +322,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.all(10.0),
                       child: CustomText(
                         align: TextAlign.right,
-                        direction: TextDirection.rtl,
                         text:
                         '(اللَّهُمَّ إنِّي أعُوذُ بكَ مِنَ الهَمِّ والحَزَنِ، والعَجْزِ والكَسَلِ، والبُخْلِ، والجُبْنِ، وضَلَعِ الدَّيْنِ، وغَلَبَةِ الرِّجالِ)',
                         size: 18,

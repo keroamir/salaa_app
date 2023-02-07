@@ -5,8 +5,10 @@ import 'package:salaa_app/model/timeprayermodel.dart';
 
 class TimePrayer {
   static getTimePrayer() async {
+    var now = DateTime.now();
+    var today = "${now.day}-${now.month}-${now.year}";
     var time = Uri.parse(
-        "https://muslimsalat.com/cairo/daily/30-01-2023.json?key=e1240af194bf8f09dd87ad9216934773");
+        "https://muslimsalat.com/cairo/daily/$today.json?key=e1240af194bf8f09dd87ad9216934773");
     var response = await http.get(time);
     var responseBody = jsonDecode(response.body)["items"][0];
     TimePrayerModel model = TimePrayerModel(
